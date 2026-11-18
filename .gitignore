@@ -1,0 +1,21 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.log
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node.js
+node_modules/
+models
+
+# PyInstaller
+build/
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db

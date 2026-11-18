@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Image Scaler — Perbesar gambar dengan mudah</title>
+  <link href="./src/output.css" rel="stylesheet">
+</head>
+
+<body class="min-w-[320px] min-h-screen bg-[#f5f7fb] bg-[image:radial-gradient(ellipse_at_12%_0%,rgba(226,235,255,0.72),transparent_34rem)] font-sans text-[#17223b] antialiased">
+  <main class="mx-auto w-[min(1200px,calc(100%_-_64px))] py-7 max-[760px]:w-[min(600px,calc(100%_-_36px))] max-[760px]:pt-[19px] max-[420px]:w-[calc(100%_-_28px)]">
+    <header class="flex min-h-[42px] items-center justify-between">
+      <a class="inline-flex items-center gap-[10px] text-[17px] font-bold tracking-[-0.65px] text-[#17223b]" href="#" aria-label="Image Scaler beranda">
+        <span class="grid size-[35px] place-items-center rounded-[11px] bg-[#6558ec] text-white shadow-[0_5px_12px_rgba(101,88,236,0.22)]" aria-hidden="true">
+          <svg class="size-[22px]" viewBox="0 0 24 24" fill="none">
+            <path d="M4 8.5V5a1 1 0 0 1 1-1h3.5M16 4h3a1 1 0 0 1 1 1v3.5M20 15.5V19a1 1 0 0 1-1 1h-3.5M8 20H5a1 1 0 0 1-1-1v-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <path d="m7 15 3-3 2 2 2-2 3 3H7Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+            <circle cx="9" cy="9" r="1.25" fill="currentColor" />
+          </svg>
+        </span>
+        <span>image<span class="text-[#6558ec]">scaler</span></span>
+      </a>
+      <span class="inline-flex items-center gap-2 text-xs font-medium text-[#77819a] max-[420px]:text-[10px]">
+        <span class="size-[7px] rounded-full bg-[#45be8b] shadow-[0_0_0_3px_rgba(69,190,139,0.12)]" aria-hidden="true"></span>
+        Siap untuk gambar kamu
+      </span>
+    </header>
+
+    <section class="pt-[68px] max-[760px]:pt-12" aria-labelledby="page-title">
+      <div class="mb-[34px] text-center max-[760px]:mb-[27px]">
+        <p class="text-[10px] font-bold tracking-[1.65px] text-[#786df0]">IMAGE UPSCALER</p>
+        <h1 id="page-title" class="mt-2.5 text-[clamp(32px,4vw,44px)] font-bold leading-[1.13] tracking-[-2px] text-[#17223b] max-[760px]:tracking-[-1.5px]">Gambar lebih tajam,<br class="hidden max-[420px]:inline"> tanpa ribet.</h1>
+        <p class="mx-auto mt-3 text-sm text-[#78829a] max-[420px]:max-w-[300px] max-[420px]:text-xs max-[420px]:leading-[1.65]">Pilih model x2 atau x4. Sisi panjang hasil dibatasi 3.840 px, rasio tetap terjaga. JPEG kualitas maksimal, ukuran hasil dibatasi 20 MB.</p>
+      </div>
+
+      <div class="grid grid-cols-[minmax(0,1fr)_42px_minmax(0,1fr)] items-center gap-[15px] max-[900px]:grid-cols-1 max-[900px]:gap-3">
+        <section class="min-h-[454px] min-w-0 rounded-[18px] border border-[#e8ebf3] bg-white/[0.88] p-6 shadow-[0_10px_32px_rgba(35,48,86,0.045)] max-[900px]:min-h-0 max-[760px]:p-[19px] max-[420px]:p-4" aria-labelledby="source-title">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <p class="text-[9px] font-bold tracking-[1.25px] text-[#786df0]">LANGKAH 1</p>
+              <h2 id="source-title" class="mt-[5px] text-[17px] font-bold tracking-[-0.45px] text-[#202b45]">Gambar sumber</h2>
+            </div>
+            <span class="flex-none rounded-full bg-[#f2f1ff] px-[10px] py-1.5 text-[10px] font-semibold text-[#665ce1]" id="source-count">0 gambar</span>
+          </div>
+
+          <label class="mt-4 flex items-center justify-between gap-3 text-[11px] font-semibold text-[#606b83]" for="scale-select">
+            <span>Model Real-ESRGAN</span>
+            <select class="max-w-[58%] cursor-pointer rounded-lg border border-[#e8ebf3] bg-white px-3 py-2 text-[11px] font-semibold text-[#3e4961] outline-none focus:border-[#8178f0]" id="scale-select">
+              <option value="2">x2</option>
+              <option value="4" selected>x4</option>
+            </select>
+          </label>
+
+          <label class="group mt-3 flex min-h-[286px] cursor-pointer flex-col items-center justify-center rounded-[13px] border-[1.5px] border-dashed border-[#d7d9ed] bg-[linear-gradient(145deg,#fbfaff,#f8f9ff)] px-4 py-6 text-center transition-[border-color,background-color,transform] duration-150 hover:border-[#8178f0] hover:bg-[#f5f4ff] focus-visible:border-[#8178f0] focus-visible:bg-[#f5f4ff] focus-visible:outline-none max-[760px]:min-h-[248px]" id="dropzone" for="image-input" tabindex="0">
+            <input id="image-input" class="hidden" type="file" accept="image/*" multiple>
+            <span class="mb-[15px] grid size-[52px] place-items-center rounded-2xl border border-[#e8e5ff] bg-[#f0efff] text-[#7165e9]" aria-hidden="true">
+              <svg class="size-[25px]" viewBox="0 0 24 24" fill="none">
+                <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14.5V19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="text-sm font-bold text-[#29334e]">Taruh gambar di sini</span>
+            <span class="mt-[5px] text-[11px] text-[#8991a5]">atau klik untuk memilih dari perangkat</span>
+            <span class="mt-[17px] rounded-lg bg-[#6558ec] px-4 py-[9px] text-[11px] font-bold text-white shadow-[0_4px_10px_rgba(101,88,236,0.19)] transition-colors group-hover:bg-[#574add]">Pilih gambar</span>
+            <span class="mt-3.5 text-[9px] text-[#a0a6b6]">PNG, JPG, WEBP, dan format gambar lainnya</span>
+          </label>
+          <p class="mt-[7px] min-h-4 text-[11px] text-[#bb4f58]" id="upload-message" role="status" aria-live="polite"></p>
+
+          <div class="mt-1.5" id="image-list-wrap" hidden>
+            <div class="flex items-center justify-between text-[11px] font-semibold text-[#606b83]">
+              <span>Gambar yang dipilih</span>
+              <button class="cursor-pointer p-1 text-[10px] font-semibold text-[#766ce5] hover:text-[#5145d3]" id="clear-images" type="button">Hapus semua</button>
+            </div>
+            <ul class="mt-[9px] grid max-h-48 gap-[7px] overflow-auto" id="image-list" aria-label="Daftar gambar yang dipilih"></ul>
+          </div>
+          <button class="mt-4 flex w-full items-center justify-center gap-2 rounded-[10px] bg-[#6558ec] px-4 py-3 text-xs font-bold text-white shadow-[0_4px_10px_rgba(101,88,236,0.19)] transition-colors hover:bg-[#574add] disabled:cursor-wait disabled:opacity-60" id="upscale-button" type="button" hidden>
+            <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="m8 1 1.5 5.5L15 8l-5.5 1.5L8 15 6.5 9.5 1 8l5.5-1.5L8 1Z" fill="currentColor" />
+            </svg>
+            Upscale x4
+          </button>
+        </section>
+
+        <div class="mx-auto grid size-[38px] place-items-center rounded-full border border-[#e9e7fb] bg-white text-[#7469e7] shadow-[0_4px_12px_rgba(45,50,90,0.06)] max-[900px]:my-[-1px] max-[900px]:size-8 max-[900px]:rotate-90" aria-hidden="true">
+          <svg class="size-[19px] max-[900px]:size-[17px]" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <section class="min-h-[454px] min-w-0 rounded-[18px] border border-[#e8ebf3] bg-white/[0.88] p-6 shadow-[0_10px_32px_rgba(35,48,86,0.045)] max-[900px]:min-h-0 max-[760px]:p-[19px] max-[420px]:p-4" aria-labelledby="result-title">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <p class="text-[9px] font-bold tracking-[1.25px] text-[#786df0]">LANGKAH 2</p>
+              <h2 id="result-title" class="mt-[5px] text-[17px] font-bold tracking-[-0.45px] text-[#202b45]">Hasil upscaling</h2>
+            </div>
+            <span class="inline-flex flex-none items-center gap-[5px] rounded-full bg-[#f2f1ff] px-[9px] py-[7px] text-[9px] font-semibold text-[#6d64d5]">
+              <svg class="size-3" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="m8 1 1.5 5.5L15 8l-5.5 1.5L8 15 6.5 9.5 1 8l5.5-1.5L8 1Z" fill="currentColor" />
+              </svg>
+              Kualitas tinggi
+            </span>
+          </div>
+
+          <p class="mt-4 text-center text-xs text-[#766ce5]" id="processing-message" role="status" aria-live="polite" hidden></p>
+          <ul class="mt-4 grid max-h-[650px] gap-3 overflow-auto" id="result-list" aria-label="Hasil gambar yang sudah diperbesar"></ul>
+          <div class="flex min-h-[366px] flex-col items-center justify-center px-[25px] py-7 text-center max-[900px]:min-h-[315px]" id="result-empty">
+            <div class="relative mb-3.5 h-[145px] w-[170px]" aria-hidden="true">
+              <span class="absolute right-6 top-[7px] z-10 text-[22px] text-[#8c82ed]">✦</span>
+              <span class="absolute bottom-[18px] left-6 z-10 text-[17px] text-[#b0a9f6]">✧</span>
+              <div class="absolute left-[25px] top-5 h-[105px] w-[93px] rotate-[-11deg] rounded-[14px] border border-[#e2e4f0] bg-[#f3f2ff] shadow-[0_12px_24px_rgba(65,69,119,0.09)]"></div>
+              <div class="absolute left-14 top-4 grid h-[105px] w-[93px] rotate-[7deg] place-items-center rounded-[14px] border border-[#e2e4f0] bg-white text-[#8a81eb] shadow-[0_12px_24px_rgba(65,69,119,0.09)]">
+                <svg class="size-[47px]" viewBox="0 0 48 48" fill="none">
+                  <rect x="7" y="9" width="34" height="30" rx="5" stroke="currentColor" stroke-width="2" />
+                  <circle cx="18" cy="20" r="3" stroke="currentColor" stroke-width="2" />
+                  <path d="m11 34 9-9 5 5 5-6 7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span class="absolute bottom-[13px] right-[13px] z-10 grid size-[27px] place-items-center rounded-full border-[3px] border-white bg-[#7165e9] text-lg font-medium leading-none text-white">+</span>
+            </div>
+            <h3 class="text-sm font-bold tracking-[-0.25px] text-[#3b4660]">Hasilmu akan muncul di sini</h3>
+            <p class="mt-[7px] max-w-[275px] text-[11px] leading-[1.7] text-[#8a93a7]">Tambahkan gambar terlebih dahulu. Hasilnya akan tampil di sini dan otomatis tersimpan di folder aplikasi.</p>
+          </div>
+        </section>
+      </div>
+
+      <p class="mt-[22px] flex items-center justify-center gap-[7px] text-[10px] text-[#929aae]">
+        <svg class="size-[14px] text-[#7f8eab]" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M8 1.5 13 3.5v3.8c0 3.2-2.1 5.8-5 7.2-2.9-1.4-5-4-5-7.2V3.5l5-2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+          <path d="m5.8 7.8 1.5 1.5 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Gambar kamu tetap aman di perangkat ini
+      </p>
+    </section>
+  </main>
+
+  <script src="./src/script.js" defer></script>
+</body>
+
+</html>
